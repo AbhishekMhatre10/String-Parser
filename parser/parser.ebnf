@@ -1,0 +1,30 @@
+dataLiterals
+  : dataLiteral*                     
+  ;
+dataLiteral
+  : list   
+  | tuple
+  | map
+  | primitive
+  ;
+primitive
+  : INT
+  | ATOM
+  | BOOL
+  ;
+list
+  : '[' dataLiteral (',' dataLiteral)* ']'
+  | '[' ']'
+  ;
+tuple
+  : '{' dataLiteral (',' dataLiteral)* '}'
+  | '{' '}'
+  ;
+map
+  : '%{' keyPair (',' keyPair)* '}'
+  | '%{' '}'
+  ;
+keyPair
+  : dataLiteral '=>' dataLiteral
+  | KEY dataLiteral
+  ;
